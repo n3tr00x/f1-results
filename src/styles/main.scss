@@ -1,0 +1,12 @@
+@use './base';
+@use './components';
+@use './layout';
+
+html {
+	font-size: base.$font-size;
+}
+
+body {
+	font-family: sans-serif;
+	background-color: base.$color-background;
+}

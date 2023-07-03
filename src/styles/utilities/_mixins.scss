@@ -1,0 +1,28 @@
+@mixin centerBlock {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin modalTemplate($isCenter: true) {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	display: block;
+	min-height: 100vh;
+	visibility: hidden;
+	backdrop-filter: blur(8px);
+	opacity: 0;
+	transition: 0.3s opacity, 0.3s visibility;
+
+	@if ($isCenter) {
+		@include centerBlock;
+	}
+
+	&--active {
+		visibility: visible;
+		opacity: 1;
+	}
+}

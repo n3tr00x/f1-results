@@ -1,0 +1,54 @@
+@use '../utilities/mixins';
+@use '../base/variables' as var;
+
+.season-schedule-modal {
+	@include mixins.modalTemplate($isCenter: false);
+
+	&__round {
+		display: flex;
+		padding: 1.6rem 1.2rem;
+		margin: 2rem 0;
+		background-color: var.$color-round-background;
+		position: relative;
+
+		.round-text {
+			position: absolute;
+			top: -8px;
+			right: 4px;
+			width: 3.6rem;
+			height: 3.6rem;
+			background-color: var.$color-main;
+			border-radius: 50%;
+			box-shadow: 0 0 4px var.$color-black;
+
+			span {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-size: 1.2rem;
+				color: var.$color-white;
+			}
+		}
+
+		img {
+			display: block;
+			width: 8rem;
+			height: 4rem;
+			min-width: 6rem;
+			min-height: 4rem;
+			border-radius: 12px;
+			box-shadow: 0 0 4px var.$color-black;
+		}
+
+		div {
+			align-self: center;
+			width: 100%;
+			text-align: center;
+		}
+
+		h2 {
+			font-size: 1.4rem;
+		}
+	}
+}

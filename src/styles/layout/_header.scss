@@ -1,0 +1,15 @@
+@use '../base/variables' as var;
+@use '../base/typography' as t;
+
+.header {
+	background: var.$color-gradient;
+	padding: 1.2rem;
+
+	&__title {
+		color: var.$color-white;
+		text-align: center;
+		font-size: 2.4rem;
+		font-family: t.$font-secondary;
+		font-weight: bold;
+	}
+}

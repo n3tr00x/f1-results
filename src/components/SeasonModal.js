@@ -1,0 +1,77 @@
+import createHTMLElement from '../utils/createHTMLElement';
+import {
+	getCircuits,
+	getRound,
+	getSeason,
+	setCircuits,
+	setRound,
+	setSeason,
+} from '../state/state';
+import { getAllCircuits } from '../utils/api';
+import { renderRaceResultContent } from './results/ResultContent';
+
+const SeasonModal = () => {
+	const title = createHTMLElement('h2', 'Wybierz sezon:', {
+		className: 'season-modal__title',
+	});
+
+	const selectSeason = createSelectTag();
+
+	selectSeason.addEventListener('change', async event => {
+		modal.classList.remove('season-modal--active');
+		setSeason(event.target.value);
+		setRound('1');
+
+		const selectedSeason = getSeason();
+		const round = getRound();
+		setCircuits(await getAllCircuits(selectedSeason));
+
+		document
+			.querySelector('.results-content')
+			.appendChild(renderRaceResultContent(selectedSeason, round));
+	});
+
+	const content = createHTMLElement('div', null, {
+		className: 'season-modal__content',
+		children: [title, selectSeason],
+	});
+
+	const modal = createHTMLElement('div', null, {
+		className: 'season-modal',
+		children: [content],
+	});
+
+	modal.addEventListener('click', event => {
+		event.target.classList.remove('season-modal--active');
+	});
+
+	return modal;
+};
+
+const createSelectTag = () => {
+	const firstSeason = 1950;
+	const currentSeason = new Date().getFullYear();
+	const allSeasons = allSeasonsGenerate(currentSeason, firstSeason, 1);
+
+	const options = allSeasons.map(season =>
+		createHTMLElement('option', `Sezon ${season}`, {
+			attrs: { value: season },
+		})
+	);
+
+	const select = createHTMLElement('select', null, {
+		className: 'season-modal__seasons',
+		children: options,
+	});
+
+	return select;
+};
+
+const allSeasonsGenerate = (start, stop, step) => {
+	return Array.from(
+		{ length: (start - stop) / step + 1 },
+		(value, index) => start - index * step
+	);
+};
+
+export default SeasonModal;

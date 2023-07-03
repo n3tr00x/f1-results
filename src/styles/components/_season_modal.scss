@@ -1,0 +1,40 @@
+@use '../base/variables' as var;
+@use '../base/typography' as t;
+@use '../utilities/mixins';
+
+.season-modal {
+	@include mixins.modalTemplate($isCenter: true);
+
+	&__content {
+		width: 100%;
+		max-width: 520px;
+		margin: 0 1.6rem;
+		padding: 4.8rem 2.4rem;
+		border-radius: 0.8rem;
+		background-color: var.$color-white;
+		box-shadow: 0 0 4px var.$color-black;
+	}
+
+	&__title {
+		margin-bottom: 0.8rem;
+		text-align: center;
+		font-family: t.$font-secondary;
+		font-weight: 700;
+		font-size: 2.4rem;
+	}
+
+	&__seasons {
+		width: 100%;
+		text-align: center;
+		appearance: none;
+		padding: 2rem;
+		border-radius: 0.8rem;
+		border: 2px solid transparent;
+		box-shadow: 0 0 2px var.$color-black;
+		outline: none;
+
+		&:focus {
+			border: 2px solid var.$color-main;
+		}
+	}
+}

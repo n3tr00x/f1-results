@@ -1,0 +1,43 @@
+@use '../base/variables' as var;
+
+.results {
+	margin: 8px;
+	&-tabs {
+		display: flex;
+		justify-content: center;
+
+		&__button {
+			width: 128px;
+			max-width: 128px;
+			padding: 1.6rem;
+			font-size: 1.4rem;
+			border: 0;
+			cursor: pointer;
+			box-shadow: 0 0 4px var.$color-black;
+
+			&:first-child {
+				border-radius: 16px 0 0 16px;
+			}
+
+			&:last-child {
+				border-radius: 0 16px 16px 0;
+			}
+
+			&--active {
+				background: var.$color-gradient;
+				color: var.$color-white;
+			}
+		}
+	}
+
+	&-content {
+		&__qualifying,
+		&__race {
+			display: none;
+		}
+
+		&--active {
+			display: block;
+		}
+	}
+}

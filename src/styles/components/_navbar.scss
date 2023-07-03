@@ -1,0 +1,36 @@
+@use '../base/variables' as var;
+
+.mobile-nav {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	background: var.$color-gradient;
+
+	ul {
+		display: flex;
+		justify-content: space-evenly;
+		margin: 0 auto;
+		max-width: 375px;
+	}
+
+	li {
+		padding: 0.4rem;
+		width: 100%;
+	}
+
+	button {
+		width: 100%;
+		background-color: transparent;
+		border: 0;
+		cursor: pointer;
+		color: var.$color-white;
+
+		img {
+			display: block;
+			margin: 0.4rem auto 0.4rem;
+			width: 3.2rem;
+		}
+	}
+}
