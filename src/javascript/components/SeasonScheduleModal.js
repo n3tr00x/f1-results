@@ -1,6 +1,10 @@
 import { getCircuits, getSeason } from '../state/state';
 import createHTMLElement from '../utils/createHTMLElement';
-import { renderRaceResultContent } from './results/ResultContent';
+import resetActiveTab from '../utils/resetActiveTab';
+import {
+	renderQualifyingResultContent,
+	renderRaceResultContent,
+} from './results/TabContent';
 
 const SeasonScheduleModal = () => {
 	const modal = createHTMLElement('div', null, {
@@ -58,10 +62,13 @@ const RoundComponent = ({ name, flag, country, round, date }) => {
 
 	roundComponent.addEventListener('click', event => {
 		const results = document.querySelector('.results-content');
+
+		resetActiveTab();
 		const season = getSeason();
 		const round = event.currentTarget.dataset.round;
 
 		results.appendChild(renderRaceResultContent(season, round));
+		results.appendChild(renderQualifyingResultContent(season, round));
 	});
 
 	return roundComponent;

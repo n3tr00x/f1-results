@@ -1,6 +1,6 @@
 import createHTMLElement from '../../utils/createHTMLElement';
-import Tabs from './ResultTabs';
-import TabContent from './ResultContent';
+import Tabs from './Tabs';
+import TabContent from './TabContent';
 
 const Results = () => {
 	const tabs = Tabs();

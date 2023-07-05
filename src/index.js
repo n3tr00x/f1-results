@@ -1,4 +1,4 @@
-import App from './components/App';
+import App from './javascript/App';
 import './styles/main.scss';
 
 const app = App();

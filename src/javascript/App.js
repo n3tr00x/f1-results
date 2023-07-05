@@ -1,11 +1,11 @@
-import { getSeason, setCircuits } from '../state/state';
-import { fetchAllCircuits } from '../utils/api';
-import createHTMLElement from '../utils/createHTMLElement';
-import CircuitsModal from './SeasonScheduleModal';
-import Header from './Header';
-import Navbar from './Navbar';
-import SeasonModal from './SeasonModal';
-import Main from './Main';
+import { getSeason, setCircuits } from './state/state';
+import { fetchAllCircuits } from './utils/api';
+import createHTMLElement from './utils/createHTMLElement';
+import CircuitsModal from './components/SeasonScheduleModal';
+import Header from './components/Header';
+import Navbar from './components/navbar/Navbar';
+import SeasonModal from './components/SeasonModal';
+import Main from './components/Main';
 
 const App = () => {
 	const currentSeason = getSeason();

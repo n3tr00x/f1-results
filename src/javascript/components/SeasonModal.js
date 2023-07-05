@@ -1,6 +1,5 @@
 import createHTMLElement from '../utils/createHTMLElement';
 import {
-	getCircuits,
 	getRound,
 	getSeason,
 	setCircuits,
@@ -8,7 +7,11 @@ import {
 	setSeason,
 } from '../state/state';
 import { fetchAllCircuits } from '../utils/api';
-import { renderRaceResultContent } from './results/ResultContent';
+import {
+	renderQualifyingResultContent,
+	renderRaceResultContent,
+} from './results/TabContent';
+import resetActiveTab from '../utils/resetActiveTab';
 
 const SeasonModal = () => {
 	const title = createHTMLElement('h2', 'Wybierz sezon:', {
@@ -18,7 +21,11 @@ const SeasonModal = () => {
 	const selectSeason = createSelectTag();
 
 	selectSeason.addEventListener('change', async event => {
+		const results = document.querySelector('.results-content');
+
 		modal.classList.remove('season-modal--active');
+		resetActiveTab();
+
 		setSeason(event.target.value);
 		setRound('1');
 
@@ -26,9 +33,10 @@ const SeasonModal = () => {
 		const round = getRound();
 		setCircuits(await fetchAllCircuits(selectedSeason));
 
-		document
-			.querySelector('.results-content')
-			.appendChild(renderRaceResultContent(selectedSeason, round));
+		results.appendChild(renderRaceResultContent(selectedSeason, round));
+		results.appendChild(
+			renderQualifyingResultContent(selectedSeason, round)
+		);
 	});
 
 	const content = createHTMLElement('div', null, {

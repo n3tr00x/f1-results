@@ -1,9 +1,9 @@
 import createHTMLElement from '../../utils/createHTMLElement';
 import { renderContent as renderSchedule } from '../SeasonScheduleModal';
-import calendar from '../../assets/calendar.svg';
-import lastRace from '../../assets/last-race.svg';
-import grandPrix from '../../assets/grand-prix.svg';
-import { renderRaceResultContent } from '../results/ResultContent';
+import calendar from '../../../assets/calendar.svg';
+import lastRace from '../../../assets/last-race.svg';
+import grandPrix from '../../../assets/grand-prix.svg';
+import { renderRaceResultContent } from '../results/TabContent';
 import ButtonWithIcon from './ButtonWithIcon';
 
 const Navbar = () => {
