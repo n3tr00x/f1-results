@@ -1,17 +1,11 @@
 import createHTMLElement from '../utils/createHTMLElement';
-import {
-	getRound,
-	getSeason,
-	setCircuits,
-	setRound,
-	setSeason,
-} from '../state/state';
-import { fetchAllCircuits } from '../utils/api';
+import { getRound, getSeason, setRound, setSeason } from '../state/state';
 import {
 	renderQualifyingResultContent,
 	renderRaceResultContent,
 } from './results/TabContent';
 import resetActiveTab from '../utils/resetActiveTab';
+import { renderSchedule } from './SeasonScheduleModal';
 
 const SeasonModal = () => {
 	const title = createHTMLElement('h2', 'Wybierz sezon:', {
@@ -22,6 +16,7 @@ const SeasonModal = () => {
 
 	selectSeason.addEventListener('change', async event => {
 		const results = document.querySelector('.results-content');
+		const schedule = document.querySelector('.season-schedule-modal');
 
 		modal.classList.remove('season-modal--active');
 		resetActiveTab();
@@ -31,12 +26,12 @@ const SeasonModal = () => {
 
 		const selectedSeason = getSeason();
 		const round = getRound();
-		setCircuits(await fetchAllCircuits(selectedSeason));
 
 		results.appendChild(renderRaceResultContent(selectedSeason, round));
 		results.appendChild(
 			renderQualifyingResultContent(selectedSeason, round)
 		);
+		schedule.appendChild(renderSchedule(selectedSeason));
 	});
 
 	const content = createHTMLElement('div', null, {

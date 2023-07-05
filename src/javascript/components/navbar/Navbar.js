@@ -1,5 +1,5 @@
 import createHTMLElement from '../../utils/createHTMLElement';
-import { renderContent as renderSchedule } from '../SeasonScheduleModal';
+import { renderSchedule } from '../SeasonScheduleModal';
 import calendar from '../../../assets/calendar.svg';
 import lastRace from '../../../assets/last-race.svg';
 import grandPrix from '../../../assets/grand-prix.svg';
@@ -23,18 +23,17 @@ const Navbar = () => {
 	grandPrixButton.addEventListener('click', () => {
 		const modal = document.querySelector('.season-schedule-modal');
 		modal.classList.add('season-schedule-modal--active');
-
-		const schedule = renderSchedule();
-		modal.appendChild(schedule);
 	});
 
 	lastRaceButton.addEventListener('click', () => {
 		const content = document.querySelector('.results-content');
+		const schedule = document.querySelector('.season-schedule-modal');
 
 		resetActiveTab();
 
 		content.appendChild(renderRaceResultContent('current', 'last'));
 		content.appendChild(renderQualifyingResultContent('current', 'last'));
+		schedule.appendChild(renderSchedule(new Date().getFullYear()));
 	});
 
 	const menuItems = [

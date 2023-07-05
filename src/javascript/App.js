@@ -8,10 +8,6 @@ import SeasonModal from './components/SeasonModal';
 import Main from './components/Main';
 
 const App = () => {
-	const currentSeason = getSeason();
-
-	fetchAllCircuits(currentSeason).then(circuits => setCircuits(circuits));
-
 	const header = Header();
 	const navbar = Navbar();
 	const main = Main();

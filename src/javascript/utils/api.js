@@ -1,4 +1,8 @@
-import { setQualifyingResults, setRaceResults } from '../state/state';
+import {
+	setCircuits,
+	setQualifyingResults,
+	setRaceResults,
+} from '../state/state';
 
 const API_URL = 'http://ergast.com/api/f1';
 const COUNTRIES_URL = 'https://restcountries.com/v3.1';
@@ -50,7 +54,7 @@ export const fetchAllCircuits = async season => {
 			}))
 		);
 
-		return data;
+		setCircuits(data);
 	} catch (error) {
 		return {
 			error: true,
