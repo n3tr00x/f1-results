@@ -1,4 +1,4 @@
-import { setRaceResults } from '../state/state';
+import { setQualifyingResults, setRaceResults } from '../state/state';
 
 const API_URL = 'http://ergast.com/api/f1';
 const COUNTRIES_URL = 'https://restcountries.com/v3.1';
@@ -8,21 +8,30 @@ const fetchCountryNationFlag = async countryName => {
 		const response = await fetch(
 			`${COUNTRIES_URL}/name/${countryName}?fields=flags`
 		);
+
+		if (!response.ok)
+			throw new Error(
+				'Wystąpił nieoczekiwany błąd przy pobieraniu danych!'
+			);
+
 		const data = await response.json();
 
 		return data[0].flags.png;
 	} catch (error) {
-		console.error(error);
+		return {
+			error: true,
+			message: error.message,
+		};
 	}
 };
 
-export const getAllCircuits = async season => {
+export const fetchAllCircuits = async season => {
 	try {
 		const response = await fetch(`${API_URL}/${season}.json`);
 		const rawData = await response.json();
 		const circuitsData = rawData.MRData.RaceTable.Races;
 
-		if (Array.isArray(circuitsData) && circuitsData.length === 0)
+		if (circuitsData?.length === 0)
 			throw new Error('Brak danych o Grand Prix z tego sezonu!');
 
 		const circuits = circuitsData.map(circuit => ({
@@ -43,7 +52,10 @@ export const getAllCircuits = async season => {
 
 		return data;
 	} catch (error) {
-		console.error(error);
+		return {
+			error: true,
+			message: error.message,
+		};
 	}
 };
 
@@ -55,10 +67,7 @@ export const fetchRaceResult = async (season, round) => {
 		const rawData = await response.json();
 		const raceInformationData = rawData.MRData.RaceTable.Races;
 
-		if (
-			Array.isArray(raceInformationData) &&
-			raceInformationData.length === 0
-		)
+		if (raceInformationData?.length === 0)
 			throw new Error('Brak danych o Grand Prix z tego sezonu!');
 
 		const raceResult = raceInformationData[0].Results;
@@ -70,12 +79,14 @@ export const fetchRaceResult = async (season, round) => {
 			laps: driver.laps,
 			time: driver?.Time?.time || driver.status,
 			points: driver.points,
-			// nationality: driver.Driver.nationality,
 		}));
 
 		setRaceResults(data);
 	} catch (error) {
-		console.error(error);
+		return {
+			error: true,
+			message: error.message,
+		};
 	}
 };
 
@@ -87,28 +98,27 @@ export const fetchQualifyingResult = async (season, round) => {
 		const rawData = await response.json();
 		const raceInformationData = rawData.MRData.RaceTable.Races;
 
-		if (
-			Array.isArray(raceInformationData) &&
-			raceInformationData.length === 0
-		)
+		if (raceInformationData?.length === 0)
 			throw new Error(
 				'Brak danych o kwalifikacjach do Grand Prix z tego sezonu!'
 			);
 
 		const qualifyingResult = raceInformationData[0].QualifyingResults;
 		const data = qualifyingResult.map(driver => ({
-			name: `${driver.Driver.givenName} ${driver.Driver.familyName}`,
-			nationality: driver.Driver.nationality,
-			team: driver.Constructor.name,
 			position: driver.position,
 			number: driver.number,
+			name: `${driver.Driver.givenName} ${driver.Driver.familyName}`,
+			team: driver.Constructor.name,
 			q1: driver?.Q1 || null,
 			q2: driver?.Q2 || null,
 			q3: driver?.Q3 || null,
 		}));
 
-		return data;
+		setQualifyingResults(data);
 	} catch (error) {
-		console.error(error);
+		return {
+			error: true,
+			message: error.message,
+		};
 	}
 };
