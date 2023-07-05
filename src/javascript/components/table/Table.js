@@ -15,10 +15,24 @@ export const QualifyingResult = () => {
 	const resultList = getQualifyingResult();
 
 	const result = resultList.map(driver => {
-		const rows = Object.values(driver);
-		const elements = rows.map(row => createHTMLElement('td', row));
+		const { position, number, name, team, code, q1, q2, q3 } = driver;
 
-		return Row(elements);
+		const elements = [
+			createHTMLElement('td', position),
+			createHTMLElement('td', number),
+			createHTMLElement('td', null, {
+				children: [
+					createHTMLElement('span', code, { className: 'code' }),
+					createHTMLElement('span', name, { className: 'full-name' }),
+				],
+			}),
+			createHTMLElement('td', team),
+			createHTMLElement('td', q1),
+			createHTMLElement('td', q2),
+			createHTMLElement('td', q3),
+		];
+
+		return Row(elements, name);
 	});
 
 	return createHTMLElement('tbody', null, {
@@ -30,10 +44,25 @@ export const RaceResult = () => {
 	const resultList = getRaceResult();
 
 	const result = resultList.map(driver => {
-		const rows = Object.values(driver);
-		const elements = rows.map(row => createHTMLElement('td', row));
+		const { position, number, name, code, team, time, laps, points } =
+			driver;
 
-		return Row(elements);
+		const elements = [
+			createHTMLElement('td', position),
+			createHTMLElement('td', number),
+			createHTMLElement('td', null, {
+				children: [
+					createHTMLElement('span', code, { className: 'code' }),
+					createHTMLElement('span', name, { className: 'full-name' }),
+				],
+			}),
+			createHTMLElement('td', team),
+			createHTMLElement('td', time),
+			createHTMLElement('td', laps),
+			createHTMLElement('td', points),
+		];
+
+		return Row(elements, name);
 	});
 
 	return createHTMLElement('tbody', null, {

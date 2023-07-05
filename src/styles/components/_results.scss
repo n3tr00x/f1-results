@@ -1,7 +1,8 @@
 @use '../base/variables' as var;
 
 .results {
-	margin: 8px;
+	margin-bottom: 66px;
+
 	&-tabs {
 		display: flex;
 		justify-content: center;

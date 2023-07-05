@@ -79,9 +79,9 @@ export const fetchRaceResult = async (season, round) => {
 			position: driver.position,
 			number: driver.number,
 			name: `${driver.Driver.givenName} ${driver.Driver.familyName}`,
-			// code:
-			// 	driver.Driver.code ||
-			// 	driver.Driver.familyName.slice(0, 3).toUpperCase(),
+			code:
+				driver.Driver.code ||
+				driver.Driver.familyName.slice(0, 3).toUpperCase(),
 			team: driver.Constructor.name,
 			laps: driver.laps,
 			time: driver?.Time?.time || driver.status,
@@ -115,6 +115,9 @@ export const fetchQualifyingResult = async (season, round) => {
 			position: driver.position,
 			number: driver.number,
 			name: `${driver.Driver.givenName} ${driver.Driver.familyName}`,
+			code:
+				driver.Driver.code ||
+				driver.Driver.familyName.slice(0, 3).toUpperCase(),
 			team: driver.Constructor.name,
 			q1: driver?.Q1 || null,
 			q2: driver?.Q2 || null,
