@@ -1,6 +1,7 @@
 import createHTMLElement from '../../utils/createHTMLElement';
 import { fetchQualifyingResult, fetchRaceResult } from '../../utils/api';
 import Table, { QualifyingResult, RaceResult } from '../table/Table';
+import Loader from '../Loader';
 
 const TabContent = () => {
 	const raceResultContent = renderRaceResultContent('current', 'last');
@@ -27,7 +28,7 @@ export const renderRaceResultContent = (season, round) => {
 		},
 	});
 
-	const HEADINGS = [
+	const headings = [
 		'POS',
 		'NUM',
 		'KIEROWCA',
@@ -39,14 +40,18 @@ export const renderRaceResultContent = (season, round) => {
 
 	const getData = async (season, round) => {
 		try {
+			content.appendChild(Loader(true));
 			const response = await fetchRaceResult(season, round);
 			if (response?.error) throw response.message;
 
-			const table = Table(HEADINGS, RaceResult());
+			const tableBody = RaceResult();
+			const table = Table(headings, tableBody);
+			Loader(false);
 			content.appendChild(table);
 		} catch (error) {
 			const text = createHTMLElement('p', error);
 			content.appendChild(text);
+			Loader(false);
 		}
 	};
 
@@ -73,15 +78,20 @@ export const renderQualifyingResultContent = (season, round) => {
 
 	const getData = async (season, round) => {
 		try {
+			content.appendChild(Loader(true));
+
 			const response = await fetchQualifyingResult(season, round);
 			if (response?.error) throw response.message;
 
 			const tableBody = QualifyingResult();
 			const table = Table(headings, tableBody);
+
+			Loader(false);
 			content.appendChild(table);
 		} catch (error) {
 			const text = createHTMLElement('p', error);
 			content.appendChild(text);
+			Loader(false);
 		}
 	};
 

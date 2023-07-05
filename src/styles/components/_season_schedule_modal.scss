@@ -3,6 +3,7 @@
 
 .season-schedule-modal {
 	@include mixins.modalTemplate($isCenter: false);
+	overflow-y: scroll;
 
 	&__round {
 		display: flex;
