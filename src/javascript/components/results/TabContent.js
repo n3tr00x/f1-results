@@ -1,6 +1,6 @@
 import createHTMLElement from '../../utils/createHTMLElement';
 import { fetchQualifyingResult, fetchRaceResult } from '../../utils/api';
-import Table, { QualifyingResult, RaceResult } from './Table';
+import Table, { QualifyingResult, RaceResult } from '../table/Table';
 
 const TabContent = () => {
 	const raceResultContent = renderRaceResultContent('current', 'last');

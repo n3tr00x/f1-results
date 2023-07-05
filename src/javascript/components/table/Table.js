@@ -1,7 +1,7 @@
 import { getQualifyingResult, getRaceResult } from '../../state/state';
 import createHTMLElement from '../../utils/createHTMLElement';
-import Headings from '../table/Headings';
-import Row from '../table/Row';
+import Headings from './Headings';
+import Row from './Row';
 
 const Table = (headingsList, resultTableBody) => {
 	const headings = Headings(headingsList);
