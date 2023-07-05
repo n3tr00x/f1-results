@@ -1,15 +1,5 @@
-import {
-	getRaceResult,
-	getSeason,
-	setCircuits,
-	setQualifyingResults,
-	setRaceResults,
-} from '../state/state';
-import {
-	fetchQualifyingResult,
-	fetchRaceResult,
-	getAllCircuits,
-} from '../utils/api';
+import { getSeason, setCircuits } from '../state/state';
+import { fetchAllCircuits } from '../utils/api';
 import createHTMLElement from '../utils/createHTMLElement';
 import CircuitsModal from './SeasonScheduleModal';
 import Header from './Header';
@@ -20,7 +10,7 @@ import Main from './Main';
 const App = () => {
 	const currentSeason = getSeason();
 
-	getAllCircuits(currentSeason).then(circuits => setCircuits(circuits));
+	fetchAllCircuits(currentSeason).then(circuits => setCircuits(circuits));
 
 	const header = Header();
 	const navbar = Navbar();

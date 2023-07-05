@@ -7,7 +7,7 @@ import {
 	setRound,
 	setSeason,
 } from '../state/state';
-import { getAllCircuits } from '../utils/api';
+import { fetchAllCircuits } from '../utils/api';
 import { renderRaceResultContent } from './results/ResultContent';
 
 const SeasonModal = () => {
@@ -24,7 +24,7 @@ const SeasonModal = () => {
 
 		const selectedSeason = getSeason();
 		const round = getRound();
-		setCircuits(await getAllCircuits(selectedSeason));
+		setCircuits(await fetchAllCircuits(selectedSeason));
 
 		document
 			.querySelector('.results-content')
