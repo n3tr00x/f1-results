@@ -3,8 +3,12 @@ import { renderContent as renderSchedule } from '../SeasonScheduleModal';
 import calendar from '../../../assets/calendar.svg';
 import lastRace from '../../../assets/last-race.svg';
 import grandPrix from '../../../assets/grand-prix.svg';
-import { renderRaceResultContent } from '../results/TabContent';
+import {
+	renderQualifyingResultContent,
+	renderRaceResultContent,
+} from '../results/TabContent';
 import ButtonWithIcon from './ButtonWithIcon';
+import resetActiveTab from '../../utils/resetActiveTab';
 
 const Navbar = () => {
 	const seasonButton = ButtonWithIcon('Wybierz sezon', calendar);
@@ -26,9 +30,11 @@ const Navbar = () => {
 
 	lastRaceButton.addEventListener('click', () => {
 		const content = document.querySelector('.results-content');
-		const result = renderRaceResultContent('current', 'last');
 
-		content.appendChild(result);
+		resetActiveTab();
+
+		content.appendChild(renderRaceResultContent('current', 'last'));
+		content.appendChild(renderQualifyingResultContent('current', 'last'));
 	});
 
 	const menuItems = [
