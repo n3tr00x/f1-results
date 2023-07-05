@@ -1,10 +1,4 @@
-import {
-	getCircuits,
-	getSeason,
-	setQualifyingResults,
-	setRaceResults,
-} from '../state/state';
-import { fetchQualifyingResult, fetchRaceResult } from '../utils/api';
+import { getCircuits, getSeason } from '../state/state';
 import createHTMLElement from '../utils/createHTMLElement';
 import { renderRaceResultContent } from './results/ResultContent';
 
@@ -62,16 +56,12 @@ const RoundComponent = ({ name, flag, country, round, date }) => {
 		},
 	});
 
-	roundComponent.addEventListener('click', async event => {
+	roundComponent.addEventListener('click', event => {
+		const results = document.querySelector('.results-content');
 		const season = getSeason();
 		const round = event.currentTarget.dataset.round;
 
-		setRaceResults(await fetchRaceResult(season, round));
-		setQualifyingResults(await fetchQualifyingResult(season, round));
-
-		document
-			.querySelector('.results-content')
-			.appendChild(renderRaceResultContent(season, round));
+		results.appendChild(renderRaceResultContent(season, round));
 	});
 
 	return roundComponent;
