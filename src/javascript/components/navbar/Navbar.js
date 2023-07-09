@@ -33,7 +33,7 @@ const Navbar = () => {
 
 		content.appendChild(renderRaceResultContent('current', 'last'));
 		content.appendChild(renderQualifyingResultContent('current', 'last'));
-		schedule.appendChild(renderSchedule(new Date().getFullYear()));
+		schedule.appendChild(renderSchedule('current'));
 	});
 
 	const menuItems = [

@@ -5,7 +5,7 @@ let state = {
 		race: [],
 		qualifying: [],
 	},
-	season: new Date().getFullYear().toString(),
+	season: 'current',
 	round: '',
 };
 
