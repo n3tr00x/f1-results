@@ -37,17 +37,17 @@ export const renderSchedule = season => {
 
 	const getData = async season => {
 		try {
-			content.appendChild(Loader(true, content));
+			Loader(content, true);
 			const response = await fetchAllCircuits(season);
 			if (response?.error) throw response.message;
 
 			const components = Rounds();
-			Loader(false, content);
+			Loader(content, false);
 			components.forEach(component => content.appendChild(component));
 		} catch (error) {
-			const text = createHTMLElement('p', error);
+			const text = createHTMLElement('p', error, { className: 'error' });
 			content.appendChild(text);
-			Loader(false);
+			Loader(content, false);
 		}
 	};
 

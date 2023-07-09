@@ -40,18 +40,19 @@ export const renderRaceResultContent = (season, round) => {
 
 	const getData = async (season, round) => {
 		try {
-			content.appendChild(Loader(true));
+			Loader(content, true);
+
 			const response = await fetchRaceResult(season, round);
 			if (response?.error) throw response.message;
 
 			const tableBody = RaceResult();
 			const table = Table(headings, tableBody);
-			Loader(false);
+			Loader(content, false);
 			content.appendChild(table);
 		} catch (error) {
-			const text = createHTMLElement('p', error);
+			const text = createHTMLElement('p', error, { className: 'error' });
 			content.appendChild(text);
-			Loader(false);
+			Loader(content, false);
 		}
 	};
 
@@ -78,7 +79,7 @@ export const renderQualifyingResultContent = (season, round) => {
 
 	const getData = async (season, round) => {
 		try {
-			content.appendChild(Loader(true));
+			Loader(content, true);
 
 			const response = await fetchQualifyingResult(season, round);
 			if (response?.error) throw response.message;
@@ -86,12 +87,12 @@ export const renderQualifyingResultContent = (season, round) => {
 			const tableBody = QualifyingResult();
 			const table = Table(headings, tableBody);
 
-			Loader(false);
+			Loader(content, false);
 			content.appendChild(table);
 		} catch (error) {
-			const text = createHTMLElement('p', error);
+			const text = createHTMLElement('p', error, { className: 'error' });
 			content.appendChild(text);
-			Loader(false);
+			Loader(content, false);
 		}
 	};
 

@@ -1,11 +1,14 @@
 import createHTMLElement from '../utils/createHTMLElement';
 
-const Loader = isLoading => {
-	if (!isLoading) document.querySelector('.loader').remove();
-
-	return createHTMLElement('span', null, {
-		className: 'loader',
-	});
+const Loader = (content, isLoading) => {
+	if (isLoading) {
+		const loader = createHTMLElement('span', null, {
+			className: 'loader',
+		});
+		content.appendChild(loader);
+	} else {
+		content.querySelector('.loader').remove();
+	}
 };
 
 export default Loader;
