@@ -1,4 +1,5 @@
 import createHTMLElement from '../../utils/createHTMLElement';
+import DriverTooltip from '../DriverTooltip';
 
 const Row = (elements, driverName) => {
 	const row = createHTMLElement('tr', null, {
@@ -9,7 +10,14 @@ const Row = (elements, driverName) => {
 	});
 
 	row.addEventListener('click', event => {
-		console.log(event.currentTarget.dataset.tooltip);
+		const body = document.querySelector('body');
+		const tooltip = DriverTooltip(event.currentTarget.dataset.tooltip);
+
+		body.appendChild(tooltip);
+
+		setTimeout(() => {
+			tooltip.remove();
+		}, 1000);
 	});
 
 	return row;

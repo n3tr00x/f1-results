@@ -32,7 +32,7 @@ export const QualifyingResult = () => {
 			createHTMLElement('td', q3),
 		];
 
-		return Row(elements, name);
+		return Row(elements, `${name} (${team})`);
 	});
 
 	return createHTMLElement('tbody', null, {
@@ -62,7 +62,7 @@ export const RaceResult = () => {
 			createHTMLElement('td', points),
 		];
 
-		return Row(elements, name);
+		return Row(elements, `${name} (${team})`);
 	});
 
 	return createHTMLElement('tbody', null, {
