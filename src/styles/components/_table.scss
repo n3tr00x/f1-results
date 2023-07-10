@@ -1,7 +1,22 @@
+@use '../base/variables' as var;
+
 .results-content__race table,
 .results-content__qualifying table {
 	width: 100%;
 	font-size: 1.3rem;
+
+	thead {
+		background-color: var.$color-main;
+		color: var.$color-white;
+
+		th {
+			padding: 1rem 0;
+		}
+	}
+
+	tr:nth-child(even) {
+		background-color: white;
+	}
 
 	td {
 		padding: 1.2rem;
