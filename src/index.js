@@ -1,6 +1,6 @@
 import App from './javascript/App';
-import SeasonModal from './javascript/components/SeasonModal';
-import SeasonScheduleModal from './javascript/components/SeasonScheduleModal';
+import SeasonModal from './javascript/components/modals/SeasonModal';
+import SeasonScheduleModal from './javascript/components/modals/SeasonScheduleModal';
 import './styles/main.scss';
 
 const app = App();

@@ -1,7 +1,7 @@
 import createHTMLElement from '../../utils/createHTMLElement';
 import { fetchQualifyingResult, fetchRaceResult } from '../../utils/api';
 import Table, { QualifyingResult, RaceResult } from '../table/Table';
-import Loader from '../Loader';
+import Loader from '../loader/Loader';
 
 const TabContent = () => {
 	const raceResultContent = renderRaceResultContent('current', 'last');

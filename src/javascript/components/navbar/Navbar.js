@@ -1,5 +1,5 @@
 import createHTMLElement from '../../utils/createHTMLElement';
-import { renderSchedule } from '../SeasonScheduleModal';
+import { renderSchedule } from '../modals/SeasonScheduleModal';
 import calendar from '../../../assets/calendar.svg';
 import lastRace from '../../../assets/last-race.svg';
 import grandPrix from '../../../assets/grand-prix.svg';

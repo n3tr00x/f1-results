@@ -1,4 +1,4 @@
-import createHTMLElement from '../utils/createHTMLElement';
+import createHTMLElement from '../../utils/createHTMLElement';
 
 const Loader = (content, isLoading) => {
 	if (isLoading) {

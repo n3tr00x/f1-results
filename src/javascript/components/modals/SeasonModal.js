@@ -1,10 +1,10 @@
-import createHTMLElement from '../utils/createHTMLElement';
-import { getRound, getSeason, setRound, setSeason } from '../state/state';
+import createHTMLElement from '../../utils/createHTMLElement';
+import { getRound, getSeason, setRound, setSeason } from '../../state/state';
 import {
 	renderQualifyingResultContent,
 	renderRaceResultContent,
-} from './results/TabContent';
-import resetActiveTab from '../utils/resetActiveTab';
+} from '../results/TabContent';
+import resetActiveTab from '../../utils/resetActiveTab';
 import { renderSchedule } from './SeasonScheduleModal';
 
 const SeasonModal = () => {

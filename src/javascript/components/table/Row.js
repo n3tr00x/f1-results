@@ -1,5 +1,5 @@
 import createHTMLElement from '../../utils/createHTMLElement';
-import DriverTooltip from '../DriverTooltip';
+import DriverTooltip from '../tooltips/DriverTooltip';
 
 const Row = (elements, driverName) => {
 	const row = createHTMLElement('tr', null, {

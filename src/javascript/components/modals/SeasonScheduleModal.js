@@ -1,12 +1,12 @@
-import { getCircuits, getSeason } from '../state/state';
-import { fetchAllCircuits } from '../utils/api';
-import createHTMLElement from '../utils/createHTMLElement';
-import resetActiveTab from '../utils/resetActiveTab';
-import Loader from './Loader';
+import { getCircuits, getSeason } from '../../state/state';
+import { fetchAllCircuits } from '../../utils/api';
+import createHTMLElement from '../../utils/createHTMLElement';
+import resetActiveTab from '../../utils/resetActiveTab';
+import Loader from '../loader/Loader';
 import {
 	renderQualifyingResultContent,
 	renderRaceResultContent,
-} from './results/TabContent';
+} from '../results/TabContent';
 
 const SeasonScheduleModal = () => {
 	const season = getSeason();

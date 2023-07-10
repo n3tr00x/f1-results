@@ -1,4 +1,4 @@
-import createHTMLElement from '../utils/createHTMLElement';
+import createHTMLElement from '../../utils/createHTMLElement';
 
 const DriverTooltip = text => {
 	const p = createHTMLElement('p', text);
