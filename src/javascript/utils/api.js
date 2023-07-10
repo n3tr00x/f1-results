@@ -1,6 +1,7 @@
 import {
 	setCircuits,
 	setQualifyingResults,
+	setRaceDetails,
 	setRaceResults,
 } from '../state/state';
 
@@ -140,6 +141,40 @@ export const fetchQualifyingResult = async (season, round) => {
 		}));
 
 		setQualifyingResults(data);
+	} catch (error) {
+		return {
+			error: true,
+			message: error.message,
+		};
+	}
+};
+
+export const fetchRaceDetails = async (season, round) => {
+	try {
+		const response = await fetch(`${API_URL}/${season}/${round}.json`);
+		const rawData = await response.json();
+		const raceInformationData = rawData.MRData.RaceTable.Races[0];
+
+		if (raceInformationData?.length === 0)
+			throw new Error('Brak danych o Grand Prix z tego sezonu!');
+
+		const details = {
+			date: raceInformationData.date,
+			raceName: raceInformationData.raceName,
+			country: raceInformationData.Circuit.Location.country,
+			locality: raceInformationData.Circuit.Location.locality,
+		};
+
+		const flag = await fetchCountryNationFlag(details.country);
+
+		const data = {
+			...details,
+			flag,
+		};
+
+		setRaceDetails(data);
+
+		return data;
 	} catch (error) {
 		return {
 			error: true,
