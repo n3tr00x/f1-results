@@ -1,6 +1,7 @@
 //STATE
 let state = {
 	circuits: [],
+	details: {},
 	results: {
 		race: [],
 		qualifying: [],
@@ -14,6 +15,7 @@ export const getSeason = () => state.season;
 export const getCircuits = () => state.circuits;
 export const getQualifyingResult = () => state.results.qualifying;
 export const getRaceResult = () => state.results.race;
+export const getRaceDetails = () => state.details;
 export const getRound = () => state.round;
 
 //SETTERS
@@ -42,6 +44,13 @@ export const setCircuits = circuits => {
 	setState(prevState => ({
 		...prevState,
 		circuits,
+	}));
+};
+
+export const setRaceDetails = details => {
+	setState(prevState => ({
+		...prevState,
+		details,
 	}));
 };
 
