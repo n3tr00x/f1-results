@@ -7,10 +7,25 @@ import {
 const API_URL = 'http://ergast.com/api/f1';
 const COUNTRIES_URL = 'https://restcountries.com/v3.1';
 
+const handleExceptionsCountryNames = country => {
+	switch (country) {
+		case 'UK':
+			country = 'GB';
+			return country;
+		case 'China':
+			country = 'CN';
+			return country;
+		default:
+			return country;
+	}
+};
+
 const fetchCountryNationFlag = async countryName => {
 	try {
+		const country = handleExceptionsCountryNames(countryName);
+
 		const response = await fetch(
-			`${COUNTRIES_URL}/name/${countryName}?fields=flags`
+			`${COUNTRIES_URL}/name/${country}?fields=flags`
 		);
 
 		if (!response.ok)
