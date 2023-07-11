@@ -6,6 +6,7 @@ import {
 } from '../results/TabContent';
 import resetActiveTab from '../../utils/resetActiveTab';
 import { renderSchedule } from './SeasonScheduleModal';
+import { renderRaceDetails } from '../race_details/RaceDetails';
 
 const SeasonModal = () => {
 	const title = createHTMLElement('h2', 'Wybierz sezon:', {
@@ -17,6 +18,7 @@ const SeasonModal = () => {
 	selectSeason.addEventListener('change', async event => {
 		const results = document.querySelector('.results-content');
 		const schedule = document.querySelector('.season-schedule-modal');
+		const details = document.querySelector('.race-details');
 
 		modal.classList.remove('season-modal--active');
 		resetActiveTab();
@@ -32,6 +34,7 @@ const SeasonModal = () => {
 			renderQualifyingResultContent(selectedSeason, round)
 		);
 		schedule.appendChild(renderSchedule(selectedSeason));
+		details.appendChild(renderRaceDetails(selectedSeason, round));
 	});
 
 	const content = createHTMLElement('div', null, {

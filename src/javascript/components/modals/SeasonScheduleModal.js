@@ -3,6 +3,7 @@ import { fetchAllCircuits } from '../../utils/api';
 import createHTMLElement from '../../utils/createHTMLElement';
 import resetActiveTab from '../../utils/resetActiveTab';
 import Loader from '../loader/Loader';
+import { renderRaceDetails } from '../race_details/RaceDetails';
 import {
 	renderQualifyingResultContent,
 	renderRaceResultContent,
@@ -92,6 +93,7 @@ const RoundComponent = ({ name, country, date, flag, round }) => {
 
 	roundComponent.addEventListener('click', event => {
 		const results = document.querySelector('.results-content');
+		const details = document.querySelector('.race-details');
 
 		resetActiveTab();
 		const season = getSeason();
@@ -99,6 +101,7 @@ const RoundComponent = ({ name, country, date, flag, round }) => {
 
 		results.appendChild(renderRaceResultContent(season, round));
 		results.appendChild(renderQualifyingResultContent(season, round));
+		details.appendChild(renderRaceDetails(season, round));
 	});
 
 	return roundComponent;

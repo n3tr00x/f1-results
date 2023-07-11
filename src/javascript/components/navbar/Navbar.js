@@ -9,6 +9,7 @@ import {
 } from '../results/TabContent';
 import ButtonWithIcon from './ButtonWithIcon';
 import resetActiveTab from '../../utils/resetActiveTab';
+import { renderRaceDetails } from '../race_details/RaceDetails';
 
 const Navbar = () => {
 	const seasonButton = ButtonWithIcon('Wybierz sezon', calendar);
@@ -28,12 +29,24 @@ const Navbar = () => {
 	lastRaceButton.addEventListener('click', () => {
 		const content = document.querySelector('.results-content');
 		const schedule = document.querySelector('.season-schedule-modal');
+		const details = document.querySelector('.race-details');
 
 		resetActiveTab();
 
 		content.appendChild(renderRaceResultContent('current', 'last'));
 		content.appendChild(renderQualifyingResultContent('current', 'last'));
 		schedule.appendChild(renderSchedule('current'));
+
+		Promise.all([
+			renderRaceResultContent('current', 'last'),
+			renderRaceDetails('current', 'last'),
+		]).then(data => {
+			console.log(data);
+			const [raceResult, raceDetails] = data;
+
+			content.appendChild(raceResult);
+			details.appendChild(raceDetails);
+		});
 	});
 
 	const menuItems = [
