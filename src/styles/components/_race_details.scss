@@ -1,0 +1,11 @@
+@use '../base/variables' as var;
+
+.race-details {
+	background-color: var.$color-white;
+	border-radius: 8px;
+
+	&__content {
+		min-height: 128px;
+		height: 128px;
+	}
+}
