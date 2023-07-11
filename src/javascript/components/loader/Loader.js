@@ -1,9 +1,12 @@
 import createHTMLElement from '../../utils/createHTMLElement';
 
-const Loader = (content, isLoading) => {
+const Loader = (content, isLoading, isDetailsLoader = false) => {
 	if (isLoading) {
 		const loader = createHTMLElement('span', null, {
-			className: 'loader',
+			className: [
+				'loader',
+				isDetailsLoader ? 'loader--details' : 'loader--main',
+			],
 		});
 		content.appendChild(loader);
 	} else {

@@ -1,24 +1,35 @@
 @use '../base/variables' as var;
 
 .loader {
-	position: absolute;
+	display: inline-block;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 120px;
-	height: 120px;
-	border: 12px solid #fff;
-	border-bottom-color: var.$color-main;
 	border-radius: 50%;
-	display: inline-block;
+	border: solid #fff;
+	border-bottom-color: var.$color-main;
 	animation: rotation 1s linear infinite;
+
+	&--main {
+		position: absolute;
+		width: 120px;
+		height: 120px;
+		border-width: 12px;
+	}
+
+	&--details {
+		position: relative;
+		width: 40px;
+		height: 40px;
+		border-width: 4px;
+	}
 }
 
 @keyframes rotation {
-	0% {
+	from {
 		transform: translate(-50%, -50%) rotate(0deg);
 	}
-	100% {
+	to {
 		transform: translate(-50%, -50%) rotate(360deg);
 	}
 }
