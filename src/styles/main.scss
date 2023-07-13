@@ -1,12 +1,16 @@
-@use './base';
-@use './components';
-@use './layout';
+@use './base/variables' as var;
+@use './base/typography' as t;
 
 html {
-	font-size: base.$font-size;
+	font-size: t.$font-size;
 }
 
 body {
-	font-family: sans-serif;
-	background-color: base.$color-background;
+	background-color: var.$color-background;
+}
+
+.wrapper {
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 auto;
 }
