@@ -163,6 +163,8 @@ export const fetchRaceDetails = async (season, round) => {
 			raceName: raceInformationData.raceName,
 			country: raceInformationData.Circuit.Location.country,
 			locality: raceInformationData.Circuit.Location.locality,
+			season: raceInformationData.season,
+			round: raceInformationData.round,
 		};
 
 		const flag = await fetchCountryNationFlag(details.country);
