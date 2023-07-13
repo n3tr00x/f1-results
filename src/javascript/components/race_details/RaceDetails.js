@@ -1,4 +1,4 @@
-import { getRaceDetails } from '../../state/state';
+import { getRaceDetails, getRound, getSeason } from '../../state/state';
 import { fetchRaceDetails } from '../../utils/api';
 import createHTMLElement from '../../utils/createHTMLElement';
 import Loader from '../loader/Loader';
@@ -24,13 +24,12 @@ export const renderRaceDetails = (season, round) => {
 	const getData = async (season, round) => {
 		try {
 			Loader(content, true, true);
-
 			const response = await fetchRaceDetails(season, round);
 			if (response?.error) throw response.message;
 
-			const component = Details();
+			const elements = Details();
 			Loader(content, false, true);
-			content.appendChild(component);
+			elements.forEach(component => content.appendChild(component));
 		} catch (error) {
 			const text = createHTMLElement('p', error, { className: 'error' });
 			content.appendChild(text);
@@ -46,9 +45,33 @@ export const renderRaceDetails = (season, round) => {
 const Details = () => {
 	const details = getRaceDetails();
 
-	console.log(details);
+	const roundText = createHTMLElement(
+		'p',
+		`Runda ${details.round} (${details.season})`
+	);
 
-	return createHTMLElement('p', details.date);
+	const round = createHTMLElement('div', null, {
+		className: 'race-details__round',
+		children: [roundText],
+	});
+
+	const flag = createHTMLElement('img', null, {
+		className: 'race-details__flag',
+		attrs: {
+			src: details.flag,
+			alt: `${details.country} nation flag`,
+		},
+	});
+
+	const information = createHTMLElement('div', null, {
+		className: 'race-details__information',
+		children: [
+			createHTMLElement('h2', details.raceName),
+			createHTMLElement('p', `${details.date} - ${details.locality}`),
+		],
+	});
+
+	return [round, flag, information];
 };
 
 export default RaceDetails;

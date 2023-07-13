@@ -1,11 +1,53 @@
 @use '../base/variables' as var;
+@use '../base/typography' as t;
+@use '../utilities/mixins' as m;
 
 .race-details {
+	position: relative;
+	padding: 1rem;
 	background-color: var.$color-white;
-	border-radius: 8px;
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 0 4px var.$color-black;
 
 	&__content {
-		min-height: 128px;
-		height: 128px;
+		@include m.centerBlock;
+		min-height: 96px;
+		height: 96px;
+	}
+
+	&__round {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 0.8rem 1.6rem;
+		background-color: var.$color-main;
+		font-size: 1.2rem;
+		color: var.$color-white;
+	}
+
+	&__information {
+		h2 {
+			font-size: 2rem;
+			font-weight: 700;
+			font-family: t.$font-secondary;
+		}
+		p {
+			font-size: 1.4rem;
+			text-align: center;
+		}
+	}
+
+	&__flag {
+		position: absolute;
+		top: 8px;
+		left: 8px;
+		display: block;
+		width: 6rem;
+		height: 3rem;
+		min-width: 6rem;
+		min-height: 3rem;
+		border-radius: 12px;
+		box-shadow: 0 0 4px var.$color-black;
 	}
 }
