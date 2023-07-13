@@ -6,11 +6,11 @@
 	overflow-y: scroll;
 
 	&__round {
-		display: flex;
-		padding: 1.6rem 1.2rem;
-		margin: 2rem 0;
-		background-color: var.$color-round-background;
 		position: relative;
+		display: flex;
+		margin: 2rem 0;
+		padding: 1.6rem 1.2rem;
+		background-color: var.$color-round-background;
 
 		.round-text {
 			position: absolute;

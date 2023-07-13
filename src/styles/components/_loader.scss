@@ -1,9 +1,10 @@
 @use '../base/variables' as var;
 
 .loader {
-	display: inline-block;
+	position: absolute;
 	top: 50%;
 	left: 50%;
+	display: inline-block;
 	transform: translate(-50%, -50%);
 	border-radius: 50%;
 	border: solid #fff;
@@ -11,14 +12,12 @@
 	animation: rotation 1s linear infinite;
 
 	&--main {
-		position: absolute;
 		width: 120px;
 		height: 120px;
 		border-width: 12px;
 	}
 
 	&--details {
-		position: relative;
 		width: 40px;
 		height: 40px;
 		border-width: 4px;
