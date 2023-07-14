@@ -5,7 +5,7 @@ import {
 	setRaceResults,
 } from '../state/state';
 
-const API_URL = 'http://ergast.com/api/f1';
+const API_URL = 'https://ergast.com/api/f1';
 const COUNTRIES_URL = 'https://restcountries.com/v3.1';
 
 const handleExceptionsCountryNames = country => {
