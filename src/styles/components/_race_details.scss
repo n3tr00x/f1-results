@@ -5,6 +5,8 @@
 .race-details {
 	position: relative;
 	padding: 1rem;
+	max-width: 800px;
+	margin: 0 auto;
 	background-color: var.$color-white;
 	border-radius: 16px;
 	overflow: hidden;

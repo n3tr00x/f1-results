@@ -9,8 +9,8 @@
 		padding: 2.2rem;
 
 		&__button {
-			width: 128px;
-			max-width: 128px;
+			width: 12rem;
+			max-width: 12rem;
 			padding: 1.6rem;
 			font-size: 1.4rem;
 			border: 0;
@@ -41,5 +41,11 @@
 		&--active {
 			display: block;
 		}
+	}
+}
+
+@media (min-width: 992px) {
+	.results {
+		margin-bottom: 0;
 	}
 }
