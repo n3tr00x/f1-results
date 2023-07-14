@@ -2,7 +2,7 @@
 @use './base/typography' as t;
 
 html {
-	font-size: t.$font-size;
+	font-size: t.$font-size-mobile;
 }
 
 body {
@@ -11,6 +11,12 @@ body {
 
 .wrapper {
 	width: 100%;
-	max-width: 1280px;
+	max-width: 1200px;
 	margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+	html {
+		font-size: t.$font-size-desktop;
+	}
 }
