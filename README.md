@@ -39,7 +39,7 @@ const createHTMLElement = (name, text = '', attributes) => {
 
 ### Live Preview
 
-Live Site URL: ([Netlify]())
+Live Site URL: ([Netlify](https://f1-results-n3tr00x.netlify.app))
 
 ### Screenshots
 
@@ -63,10 +63,10 @@ The application is using the following technologies:
 
 ## Installation locally
 
-1. Clone the repository: `git clone https://github.com/your_repository.git`
-2. Navigate to the project directory: `cd formula1-results-viewer`
+1. Clone the repository: `git clone https://github.com/n3tr00x/f1-results.git`
+2. Navigate to the project directory: `cd f1-results`
 3. Install dependencies: `npm install`
-4. Run the application: `npm start`
+4. Run the application: `npm run dev`
 
 ## Author
 
