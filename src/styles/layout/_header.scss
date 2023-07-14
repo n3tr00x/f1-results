@@ -13,3 +13,14 @@
 		font-weight: bold;
 	}
 }
+
+@media (min-width: 992px) {
+	.header__title {
+		align-self: center;
+	}
+
+	.header__container {
+		display: flex;
+		justify-content: space-between;
+	}
+}

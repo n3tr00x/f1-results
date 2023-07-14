@@ -12,7 +12,7 @@ const App = () => {
 		attrs: {
 			id: 'root',
 		},
-		children: [header, navbar, main],
+		children: [header, main],
 	});
 };
 

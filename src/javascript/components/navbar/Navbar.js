@@ -20,11 +20,15 @@ const Navbar = () => {
 	seasonButton.addEventListener('click', () => {
 		const modal = document.querySelector('.season-modal');
 		modal.classList.add('season-modal--active');
+
+		document.body.classList.add('hidden');
 	});
 
 	grandPrixButton.addEventListener('click', () => {
 		const modal = document.querySelector('.season-schedule-modal');
 		modal.classList.add('season-schedule-modal--active');
+
+		document.body.classList.add('hidden');
 	});
 
 	lastRaceButton.addEventListener('click', () => {
@@ -50,7 +54,7 @@ const Navbar = () => {
 	const menu = createHTMLElement('ul', null, { children: menuItems });
 
 	return createHTMLElement('nav', null, {
-		className: 'mobile-nav',
+		className: 'navigation',
 		children: [menu],
 	});
 };

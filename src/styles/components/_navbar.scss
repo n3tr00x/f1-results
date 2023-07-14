@@ -1,6 +1,6 @@
 @use '../base/variables' as var;
 
-.mobile-nav {
+.navigation {
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -10,13 +10,12 @@
 
 	ul {
 		display: flex;
-		justify-content: space-evenly;
 		margin: 0 auto;
 		max-width: 375px;
 	}
 
 	li {
-		padding: 0.4rem;
+		margin: 0.4rem;
 		width: 100%;
 	}
 
@@ -24,13 +23,49 @@
 		width: 100%;
 		background-color: transparent;
 		border: 0;
-		cursor: pointer;
 		color: var.$color-white;
+		cursor: pointer;
+
+		span {
+			font-size: 1.4rem;
+		}
 
 		img {
 			display: block;
 			margin: 0.4rem auto 0.4rem;
 			width: 3.2rem;
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.navigation {
+		position: static;
+		width: auto;
+		background: none;
+
+		ul {
+			max-width: unset;
+		}
+
+		button {
+			display: flex;
+			min-width: 178px;
+			padding: 0.5rem;
+			border-radius: 8px;
+
+			&:hover {
+				background-color: var.$color-main;
+			}
+
+			img {
+				margin: 0;
+			}
+
+			span {
+				margin-left: 8px;
+				align-self: center;
+			}
 		}
 	}
 }
