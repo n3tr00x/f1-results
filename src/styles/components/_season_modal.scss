@@ -7,10 +7,10 @@
 
 	&__content {
 		width: 100%;
-		max-width: 520px;
+		max-width: 640px;
 		margin: 0 1.6rem;
 		padding: 4.8rem 2.4rem;
-		border-radius: 0.8rem;
+		border-radius: 8px;
 		background-color: var.$color-white;
 		box-shadow: 0 0 4px var.$color-black;
 	}
@@ -28,6 +28,7 @@
 		text-align: center;
 		appearance: none;
 		padding: 2rem;
+		font-size: 1.6rem;
 		border-radius: 0.8rem;
 		border: 2px solid transparent;
 		box-shadow: 0 0 2px var.$color-black;
@@ -35,6 +36,11 @@
 
 		&:focus {
 			border: 2px solid var.$color-main;
+		}
+
+		option {
+			padding: 2rem 0;
+			font-size: 1.4rem;
 		}
 	}
 }

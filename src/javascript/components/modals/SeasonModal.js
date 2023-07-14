@@ -15,12 +15,13 @@ const SeasonModal = () => {
 
 	const selectSeason = createSelectTag();
 
-	selectSeason.addEventListener('change', async event => {
+	selectSeason.addEventListener('change', event => {
 		const results = document.querySelector('.results-content');
 		const schedule = document.querySelector('.season-schedule-modal');
 		const details = document.querySelector('.race-details');
 
 		modal.classList.remove('season-modal--active');
+		document.body.classList.remove('hidden');
 		resetActiveTab();
 
 		setSeason(event.target.value);
@@ -49,6 +50,9 @@ const SeasonModal = () => {
 
 	modal.addEventListener('click', event => {
 		event.target.classList.remove('season-modal--active');
+
+		if (event.target === event.currentTarget)
+			document.body.classList.remove('hidden');
 	});
 
 	return modal;
