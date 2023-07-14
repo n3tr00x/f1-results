@@ -9,7 +9,7 @@ const Row = (elements, driverName) => {
 		},
 	});
 
-	row.addEventListener('click', event => {
+	const rowClickHandler = event => {
 		const body = document.querySelector('body');
 		const tooltip = DriverTooltip(event.currentTarget.dataset.tooltip);
 
@@ -18,6 +18,18 @@ const Row = (elements, driverName) => {
 		setTimeout(() => {
 			tooltip.remove();
 		}, 1000);
+	};
+
+	const checkInnerWidth = () => {
+		if (window.innerWidth > 991)
+			row.removeEventListener('click', rowClickHandler);
+		else row.addEventListener('click', rowClickHandler);
+	};
+
+	checkInnerWidth();
+
+	window.addEventListener('resize', () => {
+		checkInnerWidth();
 	});
 
 	return row;

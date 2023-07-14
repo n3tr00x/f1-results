@@ -57,8 +57,8 @@ export const RaceResult = () => {
 				],
 			}),
 			createHTMLElement('td', team),
-			createHTMLElement('td', time),
 			createHTMLElement('td', laps),
+			createHTMLElement('td', time),
 			createHTMLElement('td', points),
 		];
 
