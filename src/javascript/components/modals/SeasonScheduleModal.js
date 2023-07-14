@@ -20,6 +20,7 @@ const SeasonScheduleModal = () => {
 
 	modal.addEventListener('click', event => {
 		event.currentTarget.classList.remove('season-schedule-modal--active');
+		document.body.classList.remove('hidden');
 	});
 
 	return modal;

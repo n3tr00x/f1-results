@@ -8,9 +8,12 @@
 	&__round {
 		position: relative;
 		display: flex;
-		margin: 2rem 0;
+		margin: 2rem auto;
 		padding: 1.6rem 1.2rem;
+		max-width: 640px;
 		background-color: var.$color-round-background;
+		border-radius: 16px;
+		cursor: pointer;
 
 		.round-text {
 			position: absolute;
