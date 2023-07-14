@@ -88,7 +88,7 @@ export const fetchRaceResult = async (season, round) => {
 		const raceInformationData = rawData.MRData.RaceTable.Races;
 
 		if (raceInformationData?.length === 0)
-			throw new Error('Brak danych o Grand Prix z tego sezonu!');
+			throw new Error('Brak danych o wyścigu z tego sezonu!');
 
 		const raceResult = raceInformationData[0].Results;
 		const data = raceResult.map(driver => ({
