@@ -5,7 +5,7 @@
 .race-details {
 	position: relative;
 	padding: 1rem;
-	max-width: 800px;
+	max-width: 760px;
 	margin: 0 auto;
 	background-color: var.$color-white;
 	border-radius: 16px;
@@ -51,5 +51,14 @@
 		min-height: 3rem;
 		border-radius: 12px;
 		box-shadow: 0 0 4px var.$color-black;
+	}
+}
+
+@media (min-width: 992px) {
+	.race-details__flag {
+		width: 8rem;
+		height: 4rem;
+		min-width: 8rem;
+		min-height: 4rem;
 	}
 }
