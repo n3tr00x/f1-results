@@ -1,5 +1,5 @@
-@use './base/variables' as var;
-@use './base/typography' as t;
+@use './variables' as var;
+@use './typography' as t;
 
 html {
 	font-size: t.$font-size-mobile;
