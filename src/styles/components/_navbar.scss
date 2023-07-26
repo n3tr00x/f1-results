@@ -50,9 +50,9 @@
 
 		button {
 			display: flex;
-			min-width: 178px;
-			padding: 0.5rem;
+			padding: 0.5rem 1rem;
 			border-radius: 8px;
+			white-space: nowrap;
 
 			&:hover {
 				background-color: var.$color-main;
